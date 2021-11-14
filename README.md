@@ -1,15 +1,18 @@
 # zchop
 
 This is a python library providing the function `zchop`, which replaces numbers
-that are close to zero with zero. `zchop` traverses structures such as `list`s and
-numpy `array`s, returning a copy that is the same as the input except that small numbers
-are set to zero.
+that are close to zero with zero.
 
-* The parts of complex numbers are treated separately
+* `zchop` traverses structures such as `list`s and
+  numpy `array`s, returning a copy that is the same as the input except that small numbers
+  are set to zero.
+* `zchop_mut` is a mutating version of `zchop` that mutates `list`s and
+numpy `array`s.
 
+# Comments
 
-* Warning. This is an early, not-debugged version.
-
+* The parts of complex numbers are treated separately.
+* Non-numbers are passed unchanged.
 
 ## Antecedents
 

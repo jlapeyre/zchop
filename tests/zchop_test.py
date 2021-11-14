@@ -1,5 +1,7 @@
+from copy import copy
 import numpy
-from zchop import zchop
+import pytest
+from zchop import zchop, zchop_mut
 
 def test_scalar():
     assert zchop(1.0) == 1.0
@@ -40,3 +42,19 @@ def test_hetero():
     assert zchop(["cat", 1e-15]) == ["cat", 0.0]
     assert zchop(["cat", 1e-8]) == ["cat", 1e-8]
     assert zchop(["cat", 1e-8, 1e-15], eps=1e-9) == ["cat", 1e-8, 0.0]
+
+m_list =  [1e-15, 0.5, 0.1]
+m_tests = [m_list, numpy.array(m_list)]
+
+@pytest.mark.parametrize('x', m_tests)
+def test_mutation(x):
+    x = [1e-15, 0.5, 0.1]
+    x1 = copy(x)
+    x_save = copy(x)
+    chopped = [0.0, 0.5, 0.1]
+    res_mut = zchop_mut(x)
+    res_copy = zchop(x1)
+    assert res_copy == chopped
+    assert x1 == x_save
+    assert res_mut == x
+    assert x == chopped
