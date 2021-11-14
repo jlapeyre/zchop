@@ -1,12 +1,12 @@
 import numpy
 
-ZCHOP_EPS = 1e-12
+_ZCHOP_EPS = 1e-12
 
-def _zchop_real_np(m, eps=ZCHOP_EPS):
+def _zchop_real_np(m, eps=_ZCHOP_EPS):
     m[abs(m) < eps] = 0.0
     return m
 
-def zchop(m, eps=ZCHOP_EPS):
+def zchop(m, eps=_ZCHOP_EPS):
     if isinstance(m, float):
         if abs(m) < eps:
             return 0.0
