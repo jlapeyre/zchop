@@ -7,6 +7,14 @@ def _zchop_real_np(m, eps=_ZCHOP_EPS):
     return m
 
 def zchop(m, eps=_ZCHOP_EPS):
+    """Replace small numbers in m with zero.
+    If m is a float, then replace m with 0 if its magnitude is
+    less than eps, which is ``1e-12`` by default.
+    If m is a complex number, then the real and imaginary parts are
+    set to zero or not independently.
+    If m is a `list` or a numpy `array`, then structure is processed
+    elementwise and the output type is equal to the input type.
+    """
     if isinstance(m, float):
         if abs(m) < eps:
             return 0.0
