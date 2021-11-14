@@ -9,3 +9,10 @@ are set to zero.
 
 
 * Warning. This is an early, not-debugged version.
+
+
+## Antecedents
+
+This package is based on the Julia pacakge [ZChop.jl](https://github.com/jlapeyre/ZChop.jl), which is in turn based on the
+Mathematica function [Chop](https://reference.wolfram.com/language/ref/Chop.html).
+
