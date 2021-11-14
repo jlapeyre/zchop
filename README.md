@@ -13,6 +13,6 @@ are set to zero.
 
 ## Antecedents
 
-This package is based on the Julia pacakge [ZChop.jl](https://github.com/jlapeyre/ZChop.jl), which is in turn based on the
+This package is based on the Julia package [ZChop.jl](https://github.com/jlapeyre/ZChop.jl), which is in turn based on the
 Mathematica function [Chop](https://reference.wolfram.com/language/ref/Chop.html).
 
