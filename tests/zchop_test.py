@@ -32,6 +32,10 @@ def test_array():
     xin = numpy.array([1, 2, 1e-15])
     xout = numpy.array([1, 2, 0])
     assert numpy.alltrue(zchop(xin) == xout)
+    # dtype is integer
+    xin = numpy.array([1, 2, 3])
+    xout = numpy.array([1, 2, 3])
+    assert numpy.alltrue(zchop(xin) == xout)
 
 def test_complex_array():
     xin = numpy.array([1, 2, 1e-15 + 2.0j])

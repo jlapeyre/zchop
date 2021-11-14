@@ -21,9 +21,12 @@ def zchop_mut(m, eps=_ZCHOP_EPS):
             m[i] = zchop(x, eps)
         return m
     if isinstance(m, numpy.ndarray):
-        if m.dtype == 'float64':
+        if numpy.isrealobj(m):
             return _zchop_real_np(m, eps)
-        return _zchop_real_np(m.real, eps) + 1j * _zchop_real_np(m.imag, eps)
+        if numpy.iscomplexobj(m):
+            return _zchop_real_np(m.real, eps) + 1j * _zchop_real_np(m.imag, eps)
+        else:
+            return m
     if isinstance(m, tuple): # tuple is immutable
         return tuple(zchop(x, eps) for x in m)
     if isinstance(m, int):
