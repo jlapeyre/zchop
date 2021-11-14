@@ -12,7 +12,7 @@ def zchop(m, eps=_ZCHOP_EPS):
     less than eps, which is ``1e-12`` by default.
     If m is a complex number, then the real and imaginary parts are
     set to zero or not independently.
-    If m is a `list` or a numpy `array`, then structure is processed
+    If m is a `list`, `tuple`, or numpy `array`, then the structure is processed
     elementwise and the output type is equal to the input type.
     """
     if isinstance(m, float):
@@ -27,6 +27,8 @@ def zchop(m, eps=_ZCHOP_EPS):
         if m.dtype == 'float64':
             return _zchop_real_np(m)
         return _zchop_real_np(m.real) + 1j * _zchop_real_np(m.imag)
+    if isinstance(m, tuple):
+        return tuple(zchop(x) for x in m)
     if isinstance(m, int):
         if abs(m) < eps:
             return 0
